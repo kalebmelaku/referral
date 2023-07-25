@@ -1,18 +1,18 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 function LoginModal()
 {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    async function handleSubmit(e){
+     function handleSubmit(e){
         e.preventDefault();
-
-       const data = await axios.post('http://localhost:5000/login', {email, password})
-        .then(res=>console.log(res.data))
-        .catch(err=>console.log(err))
+        console.log('hello');
+        // axios.post('http://localhost:5000/login', {email, password})
+        // .then(res=>console.log(res.data))
+        // .catch(err=>console.log(err))
         
-        console.log(data);
+        
     }
 
     return (

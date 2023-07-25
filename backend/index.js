@@ -1,6 +1,7 @@
 import express from "express";
 import mysql from 'mysql';
 import cors from 'cors'
+import bodyParser from 'body-parser';
 const app = express();
 
 const db = mysql.createConnection({
@@ -12,6 +13,7 @@ const db = mysql.createConnection({
 
 app.use(express.json())
 app.use(cors())
+app.use(bodyParser.json());
 app.get('/', (req, res) => {
     const q = 'SELECT * FROM users'
     db.query(q, (err, rows) => {
@@ -30,7 +32,7 @@ app.post('/login', (req, res) => {
         if(rows.length > 0){
             res.send(rows)
         }else{
-            res.send({message: "Invalid Username or Password"})
+            res.status(401).json({message: "Invalid Username or Password"})
         }
     })
 })

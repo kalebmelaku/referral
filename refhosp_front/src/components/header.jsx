@@ -3,9 +3,32 @@ import logoWhite from '../assets/img/whiteLogo.png';
 import { FaBars } from 'react-icons/fa';
 // import LoginModal from '../modals/login';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 function Header()
 {
     const [ann, setAnn] = useState(true);
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [stat, setStat] = useState(false)
+     function handleSubmit(e){
+        e.preventDefault();
+        axios.post('http://localhost:5000/login', {email, password})
+        .then(res=> {
+            if(res.status === 200){
+                console.log('logged in');
+                setStat(false)
+            }else{
+              setStat(true)
+            }
+        })
+        .catch(err=>{
+            console.log(err)
+            setStat(true)
+        })
+        
+       
+
+    }
     function handleAnn()
     {
         setAnn(!ann);
@@ -143,34 +166,41 @@ function Header()
             </header>
           
             <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Login Page</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <form>
-                                <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Email address</label>
-                                    <input type="email" className="form-control mt-1" id="exampleInputEmail"
-                                        aria-describedby="emailHelp" />
+		aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Login Page</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                    {stat ? <p className='text-danger'>Incorrect username or password</p> : null}
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-group">
+                                <label htmlFor="email">Email address</label>
+                                <input type="email" className="form-control" id="email"
+                                    aria-describedby="emailHelp" placeholder="Enter email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    />
 
-                                </div>
-                                <div className="form-group mt-3">
-                                    <label htmlFor="exampleInputPassword1">Password</label>
-                                    <input type="password" className="form-control mt-1" id="exampleInputPassword"
-                                         />
-                                </div>
-                                <button type="submit" className="mt-2 btn btn-primary btn-login">Login</button>
-                            </form>
-                        </div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input type="password" className="form-control" id="password"
+                                    placeholder="Password" 
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    />
+                            </div>
+                            <button type="submit" className="mt-2 btn btn-primary btn-login">Login</button>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
         </>
     );
 }

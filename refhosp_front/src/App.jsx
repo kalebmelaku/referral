@@ -34,7 +34,7 @@ function App()
         <Route path='/tips' element={<Tips />} />
         <Route path='/donate' element={<Donate />} />
         <Route path='/contact' element={<Contact />} />
-
+        
       </Routes>
     </>
   );
