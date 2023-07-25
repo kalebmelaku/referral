@@ -1,0 +1,92 @@
+/*variables*/
+.top {
+  background-color: #fff;
+  padding: 0.5rem !important;
+}
+.top .cont {
+  display: flex;
+  align-items: center;
+}
+.top .cont .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.top .cont .title h3 {
+  padding: 0;
+  margin: 0;
+  padding-right: 0.5rem;
+  color: #023c7b;
+  font-size: 1.2rem;
+  border-right: 5px solid #023c7b;
+  margin-left: 1.5rem;
+}
+.top .cont .close_x p {
+  position: relative;
+  z-index: 3;
+  color: #023c7b !important;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+#slider {
+  overflow: hidden;
+}
+
+#slider figure {
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  animation: 20s slider infinite;
+  margin-left: 1rem;
+}
+
+#slider figure p {
+  float: left;
+  width: 20%;
+  color: #023c7b;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+@keyframes slider {
+  0% {
+    left: 0;
+  }
+  20% {
+    left: 0;
+  }
+  25% {
+    left: -100%;
+  }
+  45% {
+    left: -100%;
+  }
+  50% {
+    left: -200%;
+  }
+  70% {
+    left: -200%;
+  }
+  75% {
+    left: -300%;
+  }
+  95% {
+    left: -300%;
+  }
+  100% {
+    left: -400%;
+  }
+}
+@media (max-width: 720px) {
+  header {
+    position: relative;
+  }
+  header .top {
+    display: none !important;
+  }
+}/*# sourceMappingURL=header.css.map */
