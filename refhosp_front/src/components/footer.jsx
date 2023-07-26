@@ -1,8 +1,27 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/logo.jpg';
 import { FaFacebookF, FaTwitter, FaTelegram, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 function Footer()
 {
+    const[email, setEmail] = useState('')
+    function sendMail(e){
+        e.preventDefault();
+
+        emailjs.send("service_k5bbnzt","template_qktbzhh",{
+            email: email,
+            }, "VC8Ty8_l7UQOpJhQk")
+            .then(res=>{
+                if(res.status === 200){
+                    alert("Successfully Subscribed. Check Your Email");
+                    setEmail('')
+                }
+               
+            })
+            .catch(err=>console.log(err))
+
+    }
     return (
         <footer className="bg-light py-5">
             <div className="container-sm">
@@ -39,7 +58,7 @@ function Footer()
                         <div className="title center">
                             <h4 className="text-center">Subscribe to our Newsletter</h4>
                         </div>
-                        <form className="form-inline">
+                        <form className="form-inline" onSubmit={sendMail}>
                             <div className="form-group mx-sm-3">
                                 <input
                                     type="email"
@@ -47,6 +66,9 @@ function Footer()
                                     id="exampleInputEmail1"
                                     aria-describedby="emailHelp"
                                     placeholder="Enter email"
+                                    name='email'
+                                    value={email}
+                                    onChange={e=>setEmail(e.target.value)}
                                 />
                             </div>
 
@@ -82,13 +104,13 @@ function Footer()
                             <p>P.o.Box: 919</p>
                             <a href="#" className="nav-link text-custom">Privacy and Cookie Policy</a>
                         </div>
-                        <div className="col-sm">
+                        {/* <div className="col-sm">
                             <p>Help Desk</p>
                             <ul className="list-group">
                                 <li className="list-group-item">
                                     <p>Call - 1234</p>
                                 </li>
-                                {/* <li className="list-group-item mt-2">
+                                <li className="list-group-item mt-2">
                                 <a
                                     type="button"
                                     className="nav-item nav-link donate"
@@ -97,9 +119,9 @@ function Footer()
                                 >
                                     Book Appointment
                                 </a>
-                            </li> */}
+                            </li>
                             </ul>
-                        </div>
+                        </div> */}
                         <div className="col-sm">
                             <p>Socials</p>
                             <nav>

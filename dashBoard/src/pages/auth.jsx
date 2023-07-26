@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Auth() {
   return (
-  <>
-    <h1>auth</h1>
-  </>
-  )
+    <>
+      <h1>auth</h1>
+    </>
+  );
 }
 
-export default Auth
+export default Auth;
