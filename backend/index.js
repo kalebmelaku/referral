@@ -74,23 +74,12 @@ app.get('/bids', (req, res) => {
 
 app.get('/download:id', (req, res) =>
 {
-    const query = url.parse(req.url, true).query;
     const id = req.params.id
     
     db.query(`SELECT * FROM bids WHERE id = ${id}`, (err, result) =>
     {
         const file_name = result[0].file;
         res.download(`./uploads/${file_name}`)
-        // console.log(`./uploads/${file_name}`)
-        // if (err) {
-        //     console.log(err)
-        // } else {
-        //     // console.log(result[0].file)
-        //     const file_data = result[0].file
-        //     res.setHeader('Content-Type', 'application/pdf')
-        //     res.setHeader('Content-Disposition', `attachment; filename=${file_name}`);
-        //     res.send(file_data)
-        // }
     })
 })
 

@@ -19,7 +19,7 @@ function BidBox(props)
 			.then(res =>
 			{
 				console.log(res);
-				FileDownload(res.data, 'bid Document')
+				FileDownload(res.data, res.data)
 			})
 			.catch(err => console.log(err));
 	}
