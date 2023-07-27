@@ -29,7 +29,7 @@ function SideNav(props) {
             </Link>
           </li>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to="/grid">
+            <Link className="sidebar-link" to="/">
               <svg className="svg-icon svg-icon-sm svg-icon-heavy">
                 <FontAwesomeIcon icon={faChartLine} />
               </svg>

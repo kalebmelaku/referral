@@ -72,7 +72,7 @@ function Bids() {
                       <input
                         type="file"
                         className="form-control"
-                        // accept=".doc,.docx,.pdf"
+                        accept=".doc,.docx,.pdf"
                         name="photo"
                         // value={file}
                         onChange={setimgfile}

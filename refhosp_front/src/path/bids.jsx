@@ -35,7 +35,7 @@ function Bids() {
             data.length > 0 ? data.map((el)=>{
               return(
                   <>
-                  <BidBox name={el.name} file={el.file} />
+                  <BidBox name={el.name} file='Download Bid Document' id={el.id} />
                   </>
                 )
               }) : <p>No Bids Available</p>

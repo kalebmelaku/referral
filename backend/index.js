@@ -4,6 +4,7 @@ import cors from 'cors'
 import multer from "multer";
 import bodyParser from 'body-parser';
 import path from 'path';
+import url from 'url'
 import { log } from "console";
 const app = express();
 
@@ -37,7 +38,7 @@ const upload = multer({storage: imgconfig})
 app.post('/login', (req, res) => {
     const q = "SELECT * FROM users WHERE email = ? AND password = ?"
     const values = [
-        req.body.email,
+        req.body.email, 
         req.body.password
     ]
     db.query(q, [req.body.email, req.body.password], (err, rows) => {
@@ -68,6 +69,28 @@ app.get('/bids', (req, res) => {
             console.log("data get")
             res.status(201).json({status:201,data:result})
         }
+    })
+})
+
+app.get('/download:id', (req, res) =>
+{
+    const query = url.parse(req.url, true).query;
+    const id = req.params.id
+    
+    db.query(`SELECT * FROM bids WHERE id = ${id}`, (err, result) =>
+    {
+        const file_name = result[0].file;
+        res.download(`./uploads/${file_name}`)
+        // console.log(`./uploads/${file_name}`)
+        // if (err) {
+        //     console.log(err)
+        // } else {
+        //     // console.log(result[0].file)
+        //     const file_data = result[0].file
+        //     res.setHeader('Content-Type', 'application/pdf')
+        //     res.setHeader('Content-Disposition', `attachment; filename=${file_name}`);
+        //     res.send(file_data)
+        // }
     })
 })
 
