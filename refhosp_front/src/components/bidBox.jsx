@@ -15,7 +15,7 @@ function BidBox(props) {
 								<p className="card-text">{fileName}</p>
 							</div>
 							<div>
-								<Link to="#" className=""><BsDownload/></Link>
+								<Link to={fileName} className=""><BsDownload/></Link>
 							</div>
 						</div>
 					</div>
