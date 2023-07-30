@@ -16,6 +16,7 @@ function Login() {
         if (res.status === 200) {
           document.body.classList.remove("modal-open");
           console.log(document.body.classList);
+          localStorage.setItem('status', 'logged in')
           navigate("/dashboard");
           setStat(false);
         } else {

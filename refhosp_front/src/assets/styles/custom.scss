@@ -162,7 +162,7 @@ body{
 }
 .dropdown:hover .dropdown-menu {
 	display: block !important;
-	margin-top: 0; 
+	margin-top: 0;
 }
 .text-cut{
 	width: 50%;
@@ -198,6 +198,7 @@ body{
 	}
 	.dropdown-menu{
 		li{
+			
 			.dropdown-item{
 				&:hover{
 					color: #000 !important;

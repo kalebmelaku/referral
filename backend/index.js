@@ -57,12 +57,32 @@ app.post('/uploadBid', upload.single("photo"), (req, res) => {
 
     db.query("INSERT INTO bids SET ?", {name: fname, file:filename}, (err, result) => {
         if(err) console.log(err);
-        else console.log('data added');
+        else res.status(201).json({status:201,data:result})
+    })
+})
+app.post('/uploadres', upload.single("photo"), (req, res) => {
+    const { year } = req.body
+    const { title } = req.body
+    const {author} = req.body;
+    const {filename} = req.file;
+    db.query("INSERT INTO research SET ?", {author: author, title:title, year: year, file: filename}, (err, result) => {
+        if(err) console.log(err);
+        else res.status(201).json({status:201,data:result})
     })
 })
 
 app.get('/bids', (req, res) => {
     db.query("SELECT * FROM bids",(err,result)=>{
+        if(err){
+            console.log("error")
+        }else{
+            console.log("data get")
+            res.status(201).json({status:201,data:result})
+        }
+    })
+})
+app.get('/research', (req, res) => {
+    db.query("SELECT * FROM research",(err,result)=>{
         if(err){
             console.log("error")
         }else{
@@ -77,6 +97,16 @@ app.get('/download:id', (req, res) =>
     const id = req.params.id
     
     db.query(`SELECT * FROM bids WHERE id = ${id}`, (err, result) =>
+    {
+        const file_name = result[0].file;
+        res.download(`./uploads/${file_name}`)
+    })
+})
+app.get('/researchdownload:id', (req, res) =>
+{
+    const id = req.params.id
+    // console.log(id)
+    db.query(`SELECT * FROM research WHERE id = ${id}`, (err, result) =>
     {
         const file_name = result[0].file;
         res.download(`./uploads/${file_name}`)

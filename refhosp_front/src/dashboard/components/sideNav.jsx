@@ -1,21 +1,27 @@
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHouse,
-  faGrip,
-  faChartLine,
+  faBookAtlas,
+  faGavel,
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function SideNav(props) {
   const state = props.state;
+  const navigate = useNavigate()
+  function logout(){
+    navigate('/')
+    localStorage.removeItem('status')
+  }
   return (
+
     <>
       <nav id="sidebar" className={state ? "shrinked" : ""}>
         <ul className="list-unstyled">
           <li className="sidebar-item">
             <Link className="sidebar-link" to="/dashboard">
               <svg className="svg-icon svg-icon-sm svg-icon-heavy">
-                <FontAwesomeIcon icon={faHouse} />
+                <FontAwesomeIcon icon={faGavel} />
               </svg>
               <span>Bids </span>
             </Link>
@@ -23,15 +29,15 @@ function SideNav(props) {
           <li className="sidebar-item">
             <Link className="sidebar-link" to="/researchupload">
               <svg className="svg-icon svg-icon-sm svg-icon-heavy">
-                <FontAwesomeIcon icon={faGrip} />
+                <FontAwesomeIcon icon={faBookAtlas} />
               </svg>
               <span>Research</span>
             </Link>
           </li>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to="/">
+            <Link className="sidebar-link" onClick={logout}>
               <svg className="svg-icon svg-icon-sm svg-icon-heavy">
-                <FontAwesomeIcon icon={faChartLine} />
+                <FontAwesomeIcon icon={faRightFromBracket} />
               </svg>
               <span>Logout </span>
             </Link>

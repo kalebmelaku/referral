@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import Dark from './img/icons/moon.png';
 import Bids from "./components/bids";
 import SideNav from "./components/sideNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style/custom.css";
 import "./style/light_mode.css";
 import "./style/style.default.css";
@@ -13,6 +13,16 @@ export default function DashBoard() {
   function sidebarToggler() {
     setNavState(!navstate);
   }
+  const navigate = useNavigate()
+  useEffect(() =>
+  {
+    
+      const status = localStorage.getItem('status')
+      if (status !== 'logged in') {
+        navigate('/login')
+      }
+    
+  })
   return (
     <div className="light App" id={"app"}>
       <header className="header">

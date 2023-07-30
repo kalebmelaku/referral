@@ -4342,14 +4342,14 @@ fieldset:disabled .btn {
   list-style: none;
 }
 
-.nav-link {
+/* .nav-link {
   display: block;
   padding: 0.5rem 1rem;
   color: #8a1668;
   text-decoration: none;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-}
+} */
 
 @media (prefers-reduced-motion: reduce) {
   .nav-link {
@@ -4391,18 +4391,18 @@ fieldset:disabled .btn {
   border-color: transparent;
 }
 
-.nav-tabs .nav-link.active,
+/* .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #6a6c70;
   background-color: #22252a;
   border-color: #40444b;
-}
+} */
 
-.nav-tabs .dropdown-menu {
+/* .nav-tabs .dropdown-menu {
   margin-top: -1px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
+} */
 
 .nav-pills .nav-link {
   background: none;
@@ -4814,7 +4814,7 @@ fieldset:disabled .btn {
 
 .navbar-light .navbar-nav .show > .nav-link,
 .navbar-light .navbar-nav .nav-link.active {
-  color: rgba(0, 0, 0, 0.9);
+  /* color: rgba(0, 0, 0, 0.9); */
 }
 
 .navbar-light .navbar-toggler {
@@ -11633,9 +11633,9 @@ i[class*="svg-"] {
   }
 }
 
-nav.navbar .dropdown-menu {
-  display: block;
-  visibility: hidden;
+/* nav.navbar .dropdown-menu {
+  display: none;
+   visibility: hidden;
   opacity: 0;
   -webkit-transform: translateY(0.5rem);
   transform: translateY(0.5rem);
@@ -11643,13 +11643,12 @@ nav.navbar .dropdown-menu {
 
 nav.navbar .dropdown-menu.show {
   display: block;
-  visibility: visible;
   opacity: 1;
   -webkit-transform: translateY(0px);
   transform: translateY(0px);
   -webkit-transition: 0.3s ease all;
   transition: 0.3s ease all;
-}
+} */
 
 nav.navbar a.nav-link {
   position: relative;

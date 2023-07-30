@@ -6,7 +6,7 @@ import axios from "axios";
 function Bids() {
   const [fname, setFName] = useState("");
   const [file, setFile] = useState("");
-
+  const [status, setStatus] = useState('');
   const setdata = (e) => {
     setFName(e.target.value);
   };
@@ -33,9 +33,9 @@ function Bids() {
       config
     );
     if (res.data.status == 201) {
-      console.log("success");
+      setStatus('Successfully Uploaded')
     } else {
-      console.log("error");
+      setStatus('Error uploading')
     }
   }
 
@@ -52,6 +52,9 @@ function Bids() {
             <div className="brand-text d-flex align-items-center justify-content-between mx-auto text-uppercase brand-big">
               <div className="texts mx-auto">
                 <h3 className="text-center">Upload Bids</h3>
+                <p className="my-3 text-center">
+                  {status}
+                </p>
               </div>
             </div>
             <div className="col-sm-6 mx-auto">
