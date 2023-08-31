@@ -16,6 +16,7 @@ import Contact from "./path/contact";
 import DashBoard from "./dashboard/dashboard";
 import ResearchUpload from "./dashboard/research";
 import Login from "./path/login";
+import Appointment from "./path/appointment";
 function App() {
   return (
     <>
@@ -37,6 +38,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/researchupload" element={<ResearchUpload />} />
+        <Route path="/appointment" element={<Appointment />} />
       </Routes>
     </>
   );
